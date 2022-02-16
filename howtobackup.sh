@@ -20,7 +20,7 @@ readonly LATEST_LINK="${BACKUP_DIR}/latest"
 # Create backup dir if not exist
 mkdir -p "${BACKUP_DIR}"
 
-# Use yesterday's backup as the incremental base if it exists
+# Use latest backup as the incremental base if it exists
 if [ -d "$LATEST_LINK" ]
 then
     OPTS="--link-dest $LATEST_LINK"
