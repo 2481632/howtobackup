@@ -36,3 +36,7 @@ rsync -av --delete \
 rm -rf "${LATEST_LINK}"
 ln -s "${BACKUP_PATH}" "${LATEST_LINK}"
 
+# Execute anything the user wants to execute after creating backup
+if [[ $(type -t exec_after) == function ]]; then
+    exec_after
+fi
