@@ -26,11 +26,13 @@ then
     OPTS="--link-dest $LATEST_LINK"
 fi
 
-rsync -av --delete \
+# Execute rsync command and create incremental backup
+rsync -a --info=STATS --delete \
     "${SOURCE_DIR}/" \
     $OPTS \
     --exclude=".cache" \
-    "${BACKUP_PATH}"
+    "${BACKUP_PATH}" \
+    --log-file="${BACKUP_DIR}/rsync.log"
 
 # Set latest backup to newly created backup
 rm -rf "${LATEST_LINK}"
